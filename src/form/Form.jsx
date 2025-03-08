@@ -1,26 +1,22 @@
-import InputField from "../reusable/inputField/InputField.jsx";
+import FormBasicProductDetails from "./ProductBasicDetails/FormBasicProcuctDetails.jsx";
+import FormWarrantyDetails from "./ProductWarrantyDetails/FormWarrantyDetails.jsx";
+import { useState } from "react";
 
 const Form = () => {
-  return (
-    <div>
-      <form className="max-w-sm mx-auto mt-10">
-        <div>
-          <h1 className="font-bold text-lg mb-5 flex justify-center">
-            Product Basic Details
-          </h1>
-        </div>
-        <InputField id="name" type="text" label="Enter Product Name" />
-        <InputField id="quantity" type="number" label="Product Quantity" />
-        <InputField id="price" type="number" label="Product Price" />
-        <button
-          type="button"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-        >
-          Next
-        </button>
-      </form>
-    </div>
-  );
+  const [formNumber, setFormNumber] = useState(1);
+  const changeFormToNext = () => {
+    setFormNumber((prevState) => prevState + 1);
+  };
+  const changeFormBack = () => {
+    setFormNumber((prevState) => prevState - 1);
+  };
+  const productFormMapper = {
+    1: <FormBasicProductDetails onclick={changeFormToNext} />,
+    2: <FormWarrantyDetails onclick={changeFormBack} />,
+  };
+  const formRenderer = () => {
+    return productFormMapper[formNumber];
+  };
+  return <div>{formRenderer()}</div>;
 };
-
 export default Form;
