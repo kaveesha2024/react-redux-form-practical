@@ -1,5 +1,6 @@
 import InputField from "../../reusable/inputField/InputField.jsx";
 import PropTypes from "prop-types";
+import Btn from "../../reusable/btn/Btn.jsx";
 
 const FormWarrantyDetails = ({ onclick }) => {
   return (
@@ -14,12 +15,8 @@ const FormWarrantyDetails = ({ onclick }) => {
         <InputField id="quantity" type="text" label="Warranty Start Date" />
         <InputField id="price" type="text" label="Warranty End Date" />
         <div className="flex justify-between">
-          <button type="button" className="blue-btn" onClick={onclick}>
-            Back
-          </button>
-          <button type="button" className="blue-btn tra">
-            Add
-          </button>
+          <Btn func={onclick} btnName="Back" />
+          <Btn func={onclick} btnName="ADD" />
         </div>
       </form>
     </div>

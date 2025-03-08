@@ -1,5 +1,6 @@
 import InputField from "../../reusable/inputField/InputField.jsx";
 import PropTypes from "prop-types";
+import Btn from "../../reusable/btn/Btn.jsx";
 
 const FormBasicProductDetails = ({ onclick }) => {
   return (
@@ -14,9 +15,10 @@ const FormBasicProductDetails = ({ onclick }) => {
         <InputField id="quantity" type="number" label="Product Quantity" />
         <InputField id="price" type="number" label="Product Price" />
         <div className="flex justify-end">
-          <button type="button" className="blue-btn" onClick={onclick}>
-            Next
-          </button>
+          <Btn
+              func={onclick}
+              btnName="Next"
+          />
         </div>
       </form>
     </div>
