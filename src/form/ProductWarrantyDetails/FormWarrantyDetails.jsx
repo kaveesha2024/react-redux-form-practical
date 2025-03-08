@@ -1,15 +1,14 @@
 import InputField from "../../reusable/inputField/InputField.jsx";
 import PropTypes from "prop-types";
 import Btn from "../../reusable/btn/Btn.jsx";
+import H1Heading from "../../reusable/H1/H1Heading.jsx";
 
 const FormWarrantyDetails = ({ onclick }) => {
   return (
     <div>
       <form className="max-w-sm mx-auto mt-10">
         <div>
-          <h1 className="font-bold text-lg mb-5 flex justify-center">
-            Product Warranty Details
-          </h1>
+          <H1Heading heading="Warranty Details" />
         </div>
         <InputField id="name" type="text" label="Warranty Period" />
         <InputField id="quantity" type="text" label="Warranty Start Date" />
