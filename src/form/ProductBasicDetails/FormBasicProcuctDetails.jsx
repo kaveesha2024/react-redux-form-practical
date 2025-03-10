@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 import Btn from "../../reusable/btn/Btn.jsx";
 import H1Heading from "../../reusable/H1/H1Heading.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import {resetFormInputFieldAreas, storeProductBasicDetails} from "../../features/slice/formSlice.js";
+import {
+  resetFormInputFieldAreas,
+  storeProductBasicDetails,
+} from "../../features/slice/formSlice.js";
 import { useEffect, useState } from "react";
 
 const FormBasicProductDetails = ({
@@ -29,16 +32,17 @@ const FormBasicProductDetails = ({
   };
   const uploadBasicProductDetails = (event) => {
     event.preventDefault();
-    if (productBasicDetails.name !== '') {
+    if (productBasicDetails.name !== "") {
       dispatch(storeProductBasicDetails(productBasicDetails));
       formChanger();
-      return
+      return;
     }
     dispatch(storeProductBasicDetails(existingDetailsOfProductBasicForm));
     formChanger();
-
   };
-  const resetButton = () => {dispatch(resetFormInputFieldAreas())};
+  const resetButton = () => {
+    dispatch(resetFormInputFieldAreas());
+  };
   return (
     <div>
       <form
