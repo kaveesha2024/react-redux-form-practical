@@ -10,7 +10,6 @@ const Form = () => {
     price: 0,
   });
 
-
   const changeFormToNext = () => {
     setFormNumber((prevState) => prevState + 1);
   };
