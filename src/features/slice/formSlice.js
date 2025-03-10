@@ -9,7 +9,10 @@ const formSlice = createSlice({
     storeProductBasicDetails: (state, action) => {
       state.basicProductDetails = action.payload;
     },
+    resetFormInputFieldAreas: (state) => {
+      state.basicProductDetails = {}
+    },
   },
 });
-export const { storeProductBasicDetails } = formSlice.actions;
+export const { storeProductBasicDetails,resetFormInputFieldAreas } = formSlice.actions;
 export default formSlice.reducer;

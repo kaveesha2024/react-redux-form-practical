@@ -2,9 +2,9 @@ import InputField from "../../reusable/inputField/InputField.jsx";
 import PropTypes from "prop-types";
 import Btn from "../../reusable/btn/Btn.jsx";
 import H1Heading from "../../reusable/H1/H1Heading.jsx";
-import {useDispatch, useSelector} from "react-redux";
-import { storeProductBasicDetails } from "../../features/slice/formSlice.js";
-import {useEffect, useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {resetFormInputFieldAreas, storeProductBasicDetails} from "../../features/slice/formSlice.js";
+import { useEffect, useState } from "react";
 
 const FormBasicProductDetails = ({
   formChanger,
@@ -12,10 +12,15 @@ const FormBasicProductDetails = ({
   productBasicDetails,
 }) => {
   const dispatch = useDispatch();
-  const [existingDetailsOfProductBasicForm, setExistingDetailsOfProductBasicForm] = useState({})
-  const alreadyAddedBasicProductDetails = useSelector((state) => state.value.basicProductDetails);
+  const [
+    existingDetailsOfProductBasicForm,
+    setExistingDetailsOfProductBasicForm,
+  ] = useState({});
+  const alreadyAddedBasicProductDetails = useSelector(
+    (state) => state.value.product.basicProductDetails,
+  );
   useEffect(() => {
-    setExistingDetailsOfProductBasicForm(alreadyAddedBasicProductDetails)
+    setExistingDetailsOfProductBasicForm(alreadyAddedBasicProductDetails);
   }, [alreadyAddedBasicProductDetails]);
 
   const inputFieldDataHandler = (event) => {
@@ -24,9 +29,16 @@ const FormBasicProductDetails = ({
   };
   const uploadBasicProductDetails = (event) => {
     event.preventDefault();
-    dispatch(storeProductBasicDetails(productBasicDetails));
+    if (productBasicDetails.name !== '') {
+      dispatch(storeProductBasicDetails(productBasicDetails));
+      formChanger();
+      return
+    }
+    dispatch(storeProductBasicDetails(existingDetailsOfProductBasicForm));
     formChanger();
+
   };
+  const resetButton = () => {dispatch(resetFormInputFieldAreas())};
   return (
     <div>
       <form
@@ -57,7 +69,8 @@ const FormBasicProductDetails = ({
           defaultValue={existingDetailsOfProductBasicForm.price}
           onChange={inputFieldDataHandler}
         />
-        <div className="flex justify-end">
+        <div className="flex justify-between">
+          <Btn func={resetButton} btnName="reset" type="button" />
           <Btn btnName="Next" type="submit" />
         </div>
       </form>
