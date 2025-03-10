@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
-const Btn = ({ func, btnName }) => {
+const Btn = ({ func, btnName, type }) => {
   return (
     <div>
-      <button type="button" className="blue-btn" onClick={func}>
+      <button type={type} className="blue-btn" onClick={func}>
         {btnName}
       </button>
     </div>
@@ -11,7 +11,8 @@ const Btn = ({ func, btnName }) => {
 };
 
 Btn.propTypes = {
-  func: PropTypes.func.isRequired,
+  func: PropTypes.func,
   btnName: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 export default Btn;

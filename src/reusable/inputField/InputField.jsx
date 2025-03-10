@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-const InputField = ({ type, id, label }) => {
+const InputField = ({ type, id, label, onChange }) => {
   return (
     <div className="mb-5">
       <label
@@ -8,7 +8,7 @@ const InputField = ({ type, id, label }) => {
       >
         {label}
       </label>
-      <input type={type} id={id} name={id} className="input-field" required />
+      <input type={type} id={id} name={id} className="input-field" required onChange={onChange}/>
     </div>
   );
 };
@@ -17,5 +17,6 @@ InputField.propTypes = {
   type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
 };
 export default InputField;

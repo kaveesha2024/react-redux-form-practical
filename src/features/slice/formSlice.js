@@ -6,10 +6,10 @@ const formSlice = createSlice({
     basicProductDetails: {},
   },
   reducers: {
-    getProductBasicDetails: (state, action) => {
-      console.log(action.payload);
+    storeProductBasicDetails: (state, action) => {
+      state.basicProductDetails = action.payload;
     },
   },
 });
-export const { getProductBasicDetails } = formSlice.actions;
+export const { storeProductBasicDetails } = formSlice.actions;
 export default formSlice.reducer;
